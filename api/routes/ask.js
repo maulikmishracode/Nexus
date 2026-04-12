@@ -1,21 +1,29 @@
-const express = require('express');
-const router = express.Router();
-const { Pool } = require('pg');
+const express    = require("express");
+const { spawn }  = require("child_process");
+const router     = express.Router();
 
-const dbPool = new Pool({ connectionString: process.env.DB_URL });
+router.post("/", async (req, res) => {
+  const { question } = req.body;
+  if (!question) return res.status(400).json({ error: "No question" });
 
-router.post('/', async (req, res) => {
-  const question = req.body.question;
-  if (!question) return res.status(400).json({ error: 'No question provided' });
+  const python = "C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python314\\python.exe";
+  const script = "C:\\hackathon\\nexus\\pipeline\\run_agent.py";
 
-  // Example: simple keyword search in documents (placeholder logic)
-  const result = await dbPool.query(
-    'SELECT answer FROM answers WHERE question ILIKE $1 LIMIT 1',
-    [`%${question}%`]
-  );
-  const answer = result.rows.length ? result.rows[0].answer : "Sorry, I don't know";
+  const proc = spawn(python, [script, question]);
+  let output = "";
+  let errors = "";
 
-  res.json({ answer });
+  proc.stdout.on("data", d => output += d.toString());
+  proc.stderr.on("data", d => errors += d.toString());
+
+  proc.on("close", () => {
+    try {
+      const result = JSON.parse(output);
+      res.json(result);
+    } catch(e) {
+      res.status(500).json({ error: errors });
+    }
+  });
 });
 
 module.exports = router;
