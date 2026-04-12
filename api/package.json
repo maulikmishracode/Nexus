@@ -6,11 +6,13 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "cors": "^2.8.5",
     "body-parser": "^1.20.0",
-    "express-fileupload": "^1.4.0",
-    "redis": "^4.6.5",
-    "pg": "^8.7.3"      
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.1",
+    "express": "^4.22.1",
+    "express-fileupload": "^1.5.2",
+    "pg": "^8.20.0",
+    "redid": "^0.0.0",
+    "redis": "^4.6.5"
   }
 }
