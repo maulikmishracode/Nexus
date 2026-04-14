@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://www.desmos.com/api/v1.10/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+</head>
+<body>
+
+    <!-- PROGRESS BAR -->
+    <div id="progressBar"></div>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo">NEXUS</div>
+        <nav>
+            <a href="javascript:scrollToSection('analyze')">Analyze</a>
+            <a href="javascript:scrollToSection('features')">Features</a>
+            <a href="javascript:scrollToSection('pricing')">Pricing</a>
+            <a href="javascript:scrollToSection('contact')">Contact</a>
+        </nav>
+        <button class="cta-btn" onclick="getEarlyAccess()">Get Started</button>
+    </header>
+
+    <main>
+
+        <!-- ── HERO SCROLL ANIMATION (500vh) ── -->
+        <section class="hero-scroll-container">
+            <div class="sticky-canvas-wrapper">
+                <canvas id="hero-canvas"></canvas>
+                <div class="overlay"></div>
+                <div class="hero-content">
+                    <p class="eyebrow">Intelligent Knowledge Engine</p>
+                    <h1>Deconstruct<br>the complex.</h1>
+                    <p class="subtitle">Transform raw documents into actionable knowledge and tangled equations to graphs instantly.</p>
+                    <button class="cta-btn" onclick="scrollToSection('analyze')">
+                        Explore Platform ↓
+                    </button>
+                </div>
+                <div class="scroll-hint" id="scrollHint">
+                    <span>Scroll to explore</span>
+                    <div class="scroll-arrow"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── DOCUMENT ANALYZE SECTION ── -->
+        <section class="content-section" id="analyze">
+            <div class="container">
+                <p class="section-label">Document Intelligence</p>
+                <h2>Analyze Your Documents.</h2>
+                <p class="section-sub">Upload PDFs, Word docs, PowerPoints, spreadsheets, images and more — then ask NEXUS anything about them.</p>
+
+
+
+
+                <!-- UPLOAD ZONE -->
+                <div class="upload-zone" id="dropZone">
+                    <input type="file" id="fileInput" multiple
+                        accept=".pdf,.ppt,.pptx,.doc,.docx,.xls,.xlsx,.csv,.txt,.md,.json,.png,.jpg,.jpeg,.gif,.webp,.zip">
+                    <div class="upload-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <p class="upload-title">Drop files here or click to browse</p>
+                    <p class="upload-sub-text">Drag &amp; drop multiple files at once. All major document formats supported.</p>
+                    <div class="pill-row">
+                        <span class="pill">PDF</span>
+                        <span class="pill">DOCX</span>
+                        <span class="pill">PPTX</span>
+                        <span class="pill">XLSX</span>
+                        <span class="pill">CSV</span>
+                        <span class="pill">TXT</span>
+                        <span class="pill">MD</span>
+                        <span class="pill">JSON</span>
+                        <span class="pill">PNG / JPG</span>
+                    </div>
+                </div>
+
+                <!-- FILE LIST -->
+                <div class="file-list" id="fileList"></div>
+
+                <!-- PROMPT ROW -->
+                <div class="prompt-row">
+                    <input type="text" id="promptInput" placeholder="Ask a question...">
+                    <button class="btn-clear" onclick="clearFiles()">Clear</button>
+                    <button class="btn-analyze" onclick="analyzeFiles()">Analyze ↗</button>
+                </div>
+
+                <!-- RESPONSE BOX -->
+                <div class="response-box" id="responseBox">
+                    <div class="status-badge processing" id="statusBadge">
+                        <span class="dot pulse"></span> Processing...
+                    </div>
+                    <div id="responseText"></div>
+                    <div class="sources-line" id="sourcesLine"></div>
+                </div>
+            <div>
+
+<div class="section">
+    <div style="max-width: 800px; margin:0 auto; text-align: center;">
+        <h2>Graphical Visualization</h2>
+        <p></p>
+        
+        <input type="text" id="mathInput" placeholder="y = sin(x)" 
+               style="padding:15px; width:70%; border-radius:10px; border:none; margin-bottom: 20px; background: rgba(255,255,255,0.1); color: white;">
+        
+        <div id="calculator" style="width: 100%; height: 500px; border-radius: 20px; margin-bottom:20px; overflow: hidden;"></div>
+    </div>
+</div>
+
+        </div>
+        <!-- ── FEATURES SECTION ── -->
+        <section class="content-section alt" id="features">
+            <div class="container">
+                <p class="section-label">Core Capabilities</p>
+                <h2>Continuous Intelligence.</h2>
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">01</div>
+                        <h3>Automated Ingestion</h3>
+                        <p>Feed NEXUS unstructured data and watch as it seamlessly extracts vital entities and relationships.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">02</div>
+                        <h3>Dynamic Graph Visualization</h3>
+                        <p>Explore your business universe with interactive tools tailored for profound exploration.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">03</div>
+                        <h3>Real-time Insights</h3>
+                        <p>Monitor changing structures and data flows with millimeter precision securely on-prem.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">04</div>
+                        <h3>Source Tracking</h3>
+                        <p>Every answer cites which document and section it came from — full auditability built in.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── STATS SECTION ── -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat">
+                        <span class="stat-number">10M+</span>
+                        <span class="stat-label">Nodes Processed</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">99%</span>
+                        <span class="stat-label">Uptime SLA</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">&lt;50ms</span>
+                        <span class="stat-label">Query Latency</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Enterprise Clients</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── PRICING SECTION ── -->
+        <section class="content-section" id="pricing">
+            <div class="container">
+                <p class="section-label">Pricing</p>
+                <h2>Simple, Transparent Plans.</h2>
+                <div class="features">
+                    <div class="feature-card pricing-card">
+                        <div class="feature-icon">FREE</div>
+                        <h3>Sandbox</h3>
+                        <p>Upload up to 3 docs. Basic analysis &amp; graph visualization.</p>
+                        <button class="cta-btn" style="margin-top:24px;" onclick="startFree()">Start Free</button>
+                    </div>
+                    <div class="feature-card pricing-card featured">
+                        <div class="feature-icon">PRO</div>
+                        <h3>Professional</h3>
+                        <p>Unlimited docs. Advanced AI modeling, export &amp; API access.</p>
+                        <button class="cta-btn" style="margin-top:24px;" onclick="getPro()">Get Pro</button>
+                    </div>
+                    <div class="feature-card pricing-card">
+                        <div class="feature-icon">ENT</div>
+                        <h3>Enterprise</h3>
+                        <p>Custom API, on-prem deployment, dedicated SLA &amp; support.</p>
+                        <button class="cta-btn" style="margin-top:24px;" onclick="scrollToSection('contact')">Contact Sales</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── CTA BAND ── -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to see the graph?</h2>
+                <p>Start transforming your unstructured data into living knowledge — in minutes.</p>
+                <button class="cta-btn large" onclick="getEarlyAccess()">Request Early Access</button>
+            </div>
+        </section>
+
+        <!-- ── CONTACT SECTION ── -->
+        <section class="content-section" id="contact">
+            <div class="container" style="max-width:640px;">
+                <p class="section-label">Contact</p>
+                <h2>Get in Touch.</h2>
+                <div class="contact-form">
+                    <input type="text" id="contactName" placeholder="Your Name">
+                    <input type="email" id="contactEmail" placeholder="Your Email">
+                    <textarea id="contactMsg" placeholder="Describe your project..."></textarea>
+                    <button class="btn-analyze" onclick="sendMessage()">Send Message ↗</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="logo">NEXUS</div>
+        <p>&copy; 2026 NEXUS Inc. All rights reserved.</p>
+    </footer>
+
+    <!-- Dev frame counter (hidden by default) -->
+    <div id="frameCounter"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

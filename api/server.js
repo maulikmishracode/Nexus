@@ -13,6 +13,7 @@ const port = process.env.PORT || 3000;
 // Middlewares
 app.use(cors());
 app.use(express.json());
+app.use(require('express').static(require('path').join(__dirname, '../frontend')));
 app.use(fileUpload());
 
 // Database connection

@@ -7,7 +7,7 @@ router.post("/", async (req, res) => {
   if (!question) return res.status(400).json({ error: "No question" });
 
   const python = "C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python314\\python.exe";
-  const script = "C:\\hackathon\\nexus\\pipeline\\run_agent.py";
+  const script = "C:\\Users\\HP\\Desktop\\Nexus\\pipeline\\run_agent.py";
 
   const proc = spawn(python, [script, question]);
   let output = "";

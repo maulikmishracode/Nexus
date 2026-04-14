@@ -1,0 +1,23 @@
+# Node
+node_modules/
+npm-debug.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+
+# Uploads
+api/uploads/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Models (too large for GitHub)
+pipeline/models/
+
+# Airflow logs
+pipeline/airflow/logs/
